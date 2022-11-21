@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Navbar } from "./components/Navbar";
+import Translation from "./components/Translation";
+import Translator from "././components/Translator";
+import ButtonAppBar from "./components/ButtonAppBar";
+import { useState } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const darkTheme = createTheme({
+    palette: {
+        mode: "dark",
+        primary: {
+            main: "#1976d2",
+        },
+    },
+});
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [text, setText] = useState(); // userInput from the Translation component
+
+    return (
+        <ThemeProvider theme={darkTheme}>
+            <div className="App">
+                <Navbar />
+                <ButtonAppBar />
+                <div className="translation-area">
+                    <Translation
+                        title="Enter English"
+                        translate={(userInput) => {
+                            setText(userInput);
+                        }}
+                    />
+                    <Translator title="Translation" text={text} />
+                </div>
+            </div>
+        </ThemeProvider>
+    );
 }
 
 export default App;
