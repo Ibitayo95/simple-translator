@@ -30,7 +30,7 @@ function App() {
                             setText(userInput);
                         }}
                     />
-                    <Translator title="Translation" text={text} />
+                    <Translator title="Spanish Translation" text={text} />
                 </div>
             </div>
         </ThemeProvider>
