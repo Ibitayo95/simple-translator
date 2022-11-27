@@ -15,12 +15,11 @@ export default function Translator({ title, text }) {
                     headers: {
                         Accept: "application/json",
                         "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "*",
                     },
                     body: text,
                 };
                 const response = await fetch(
-                    "http://localhost:8080/translate/",
+                    "https://translator-apis.herokuapp.com/translate/",
                     config
                 );
                 const json = await response.json();
